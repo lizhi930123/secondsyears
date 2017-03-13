@@ -82,7 +82,7 @@ export default {
 		    		me.propsseven=!me.propsseven;
 		    		break;
 		    		case 7:
-		    		me.propseight=!me.propseigth;
+		    		me.propseight=!me.propseight;
 		    		break;
 		    	}
 		    },

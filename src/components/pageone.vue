@@ -1,5 +1,6 @@
 <template>
 <div>
+pageone
 	<p :class="{animated:true,rubberBand:swi}">这是第一条数据</p>
 	<p :class="{animated:true,wobble:swi}">这是第二条数据</p>
 	<p :class="{animated:true,swing:swi}">这是第三条数据</p>
@@ -23,7 +24,6 @@
 			}
 		},
 		mounted:function(){
-			clearTimeout(this.time);
 			this.animation();
 		},
 		methods:{
@@ -51,14 +51,14 @@
 	  -webkit-animation-duration: 1s;
 	  animation-duration: 1s;
 	  -webkit-animation-fill-mode: forwards;
-	  animation-fill-mode: both;
+	  animation-fill-mode:forwards;
 	  opacity: 0;
 	}
 	@-webkit-keyframes rubberBand {
   from {
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1);
-    opacity: 0;
+    opacity: 1;
   }
   30% {
   	opacity: 1;
@@ -67,7 +67,7 @@
   }
 
   40% {
-  	opacity: 0;
+  	opacity: 1;
     -webkit-transform: scale3d(0.75, 1.25, 1);
     transform: scale3d(0.75, 1.25, 1);
   }
@@ -79,7 +79,7 @@
   }
 
   65% {
-  	opacity: 0;
+  	opacity: 1;
     -webkit-transform: scale3d(.95, 1.05, 1);
     transform: scale3d(.95, 1.05, 1);
   }
@@ -101,7 +101,7 @@
   from {
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1);
-	opacity: 0;
+	opacity: 1;
   }
 
   30% {
