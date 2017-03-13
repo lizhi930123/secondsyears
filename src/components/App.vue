@@ -3,19 +3,18 @@
 <div id="app">
 	<div class="swiper-container">
 	    <div class="swiper-wrapper">
-	        <div class="swiper-slide"><pageone></pageone></div>
-	       	<div class="swiper-slide"><pagetwo></pagetwo></div>
-	        <div class="swiper-slide"><pagethree></pagethree></div>
-	       	<div class="swiper-slide"><pagefour></pagefour></div>
-	       	 <div class="swiper-slide"><pagefive></pagefive></div>
-	       	<div class="swiper-slide"><pagesix></pagesix></div>
-	        <div class="swiper-slide"><pageseven></pageseven></div>
-	       	<div class="swiper-slide"><pageeight></pageeight></div>
+	        <div class="swiper-slide"><pageone :propsone="propsone"></pageone></div>
+	       	<div class="swiper-slide"><pagetwo :propstwo="propstwo"></pagetwo></div>
+	        <div class="swiper-slide"><pagethree :propsthree="propsthree"></pagethree></div>
+	       	<div class="swiper-slide"><pagefour :propsfour="propsfour"></pagefour></div>
+	       	<div class="swiper-slide"><pagefive :propsfive="propsfive"></pagefive></div>
+	       	<div class="swiper-slide"><pagesix :propssix="propssix"></pagesix></div>
+	        <div class="swiper-slide"><pageseven :propsseven="propsseven"></pageseven></div>
+	       	<div class="swiper-slide"><pageeight :propseight="propseight"></pageeight></div>
 	    </div>
 	</div>
 </div>
 </template>
-
 <script>
 import pageone from './pageone'
 import pagetwo from './pagetwo'
@@ -29,6 +28,14 @@ export default {
 	name: 'app',
 	data() {
 		return {
+			propsone:false,
+			propstwo:false,
+			propsthree:false,
+			propsfour:false,
+			propsfive:false,
+			propssix:false,
+			propsseven:false,
+			propseight:false,
 		}
 	},
 	components: {
@@ -41,14 +48,44 @@ export default {
 		pageseven,
 		pageeight
 	},
-	mounted: function() {
+	mounted: function(){
 		for(var a=document.cookie.split(';'),i=0;i<a.length;i++){
 			if(a[i].match(/access_token/i)){
 				this.$store.state.access_token=a[i].split('=')[1];
 			}
 		}
+		var me=this;
 		var mySwiper = new Swiper ('.swiper-container', {
 		    mode: 'vertical',
+		    onSlideChangeStart:function(){
+		    	var index=mySwiper.activeIndex;
+		    	switch(index){
+		    		case 0:
+		    		me.propsone=!me.propsone;
+		    		break;
+		    		case 1:
+		    		me.propstwo=!me.propstwo;
+		    		break;
+		    		case 2:
+		    		me.propsthree=!me.propsthree;
+		    		break;
+		    		case 3:
+		    		me.propsfour=!me.propsfour;
+		    		break;
+		    		case 4:
+		    		me.propsfive=!me.propsfive;
+		    		break;
+		    		case 5:
+		    		me.propssix=!me.propssix;
+		    		break;
+		    		case 6:
+		    		me.propsseven=!me.propsseven;
+		    		break;
+		    		case 7:
+		    		me.propseight=!me.propseigth;
+		    		break;
+		    	}
+		    },
 	  	})
 	},
 	methods: {
