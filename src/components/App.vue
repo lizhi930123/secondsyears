@@ -1,6 +1,9 @@
 //此文件为主入口
 <template>
 <div id="app">
+  <img src="./../assets/cicleone.png" class="cicleone mymove1">
+  <img src="./../assets/cicletwo.png" class="cicletwo mymove2">
+  <img src="./../assets/ciclethree.png" class="ciclethree mymove3">
 	<div class="swiper-container">
 	    <div class="swiper-wrapper">
 	        <div class="swiper-slide"><pageone :propsone="propsone"></pageone></div>
@@ -16,6 +19,7 @@
 </div>
 </template>
 <script>
+require("./../../static/animation.css")
 import pageone from './pageone'
 import pagetwo from './pagetwo'
 import pagethree from './pagethree'
@@ -56,7 +60,12 @@ export default {
 		}
 		var me=this;
 		var mySwiper = new Swiper ('.swiper-container', {
-		    mode: 'vertical',
+		   	direction: 'vertical',
+		   	effect:'slide',
+		   	onSliderMove: function(swiper, event){
+		   		var slider=document.querySelectorAll('.swiper-slide');
+		   		console.log()
+		   	},
 		    onSlideChangeStart:function(){
 		    	var index=mySwiper.activeIndex;
 		    	switch(index){
@@ -103,5 +112,69 @@ export default {
 html,body,#app,.swiper-container{
 	width:100%;
 	height:100%;
+	font-family: 'PingFangSC-Regular','microsoft yahei';
+	overflow-x:hidden;
 }
+.swiper-container{
+	z-index:999;
+}
+#app{
+	position: relative;
+    background: linear-gradient(top,#470F71,#2C63D8);
+	background: -webkit-linear-gradient(top,#470F71,#2C63D8);
+}
+	div.container{
+		width:100%;
+		height:10.85rem;
+    overflow:hidden;
+    background: transparent;
+    position: absolute;
+    top:50%;
+    margin-top:-5.425rem;
+	}
+.cicleone{
+    position: absolute;
+    display: block;
+    width:2rem;
+    top:4.66rem;
+    left:.18rem;
+    z-index:9;
+  }
+   .cicletwo{
+    position: absolute;
+    display: block;
+    width:2.96rem;
+    top:5.96rem;
+    left:1.1rem;
+    z-index:99;
+  }
+  .ciclethree{
+    position: absolute;
+    display: block;
+    width:3.7rem;
+    left:4.84rem;
+    top:3.62rem;
+    z-index:99;
+  }
+  .data{
+    float: left;
+    margin-left:.6rem;
+  }
+  p{
+    font-size:.3rem;
+    line-height:.5rem;
+    height:.5rem;
+    color:#fff;
+    width:100%;
+  }
+  span{
+    display: inline-block;
+	margin:0 .1rem;
+    color:#F8E71C;
+    text-align:center;
+  }
+  span.big{
+  	font-size:.5rem;
+  	line-height:.3rem;
+  }
 </style>
