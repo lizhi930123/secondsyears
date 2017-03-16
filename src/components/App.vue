@@ -12,8 +12,7 @@
 	       	<div class="swiper-slide"><pagefour :propsfour="propsfour"></pagefour></div>
 	       	<div class="swiper-slide"><pagefive :propsfive="propsfive"></pagefive></div>
 	       	<div class="swiper-slide"><pagesix :propssix="propssix"></pagesix></div>
-	        <div class="swiper-slide"><pageseven :propsseven="propsseven"></pageseven></div>
-	       	<div class="swiper-slide"><pageeight :propseight="propseight"></pageeight></div>
+	        <div class="swiper-slide"><change_identity :changeI = "changeI"></change_identity><pageseven :propsseven="propsseven"></pageseven></div>
 	    </div>
 	</div>
 </div>
@@ -28,7 +27,7 @@
     import pagefive from './pagefive'
     import pagesix from './pagesix'
     import pageseven from './pageseven'
-    import pageeight from './pageeight'
+    import change_identity from './change_identity'
     export default {
         name: 'app',
         data() {
@@ -51,7 +50,7 @@
             pagefive,
             pagesix,
             pageseven,
-            pageeight
+            change_identity
         },
         mounted: function() {
             for (var a = document.cookie.split(';'), i = 0; i < a.length; i++) {
