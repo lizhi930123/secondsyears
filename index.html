@@ -2,57 +2,67 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
-	<title>周年庆典</title>
-	<link rel="stylesheet" href="./static/swiper.min.css">
-	<style>
-	</style>
-	<script src="/static/swiper.min.js"></script>
-	<script>
-		//声明_czc对象:
-		var _czc = _czc || [];
-		//绑定siteid，请用您的siteid替换下方"XXXXXXXX"部分
-		_czc.push(["_setAccount", "1259421891"]);
-	</script>
-	<script>
-		var init=false,bri={};
-		function connectWebViewJavascriptBridge(callback) {
-			if (window.WebViewJavascriptBridge) {
-				return callback(WebViewJavascriptBridge);
-			}
-		    if (window.WVJBCallbacks){
-		        return window.WVJBCallbacks.push(callback);
-		    }
-		    window.WVJBCallbacks = [callback];
-		    var WVJBIframe = document.createElement('iframe');
-		    WVJBIframe.style.display = 'none';
-		    WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
-		    document.documentElement.appendChild(WVJBIframe);
-		    setTimeout(function(){ document.documentElement.removeChild(WVJBIframe)},0)
-		};
-		connectWebViewJavascriptBridge(function(bridge) {
-			init=true;
-			bri=bridge;
-		});
-		(function (doc, win) {
-			var docEl = doc.documentElement,
-			resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
-			recalc = function () {
-				var clientWidth = docEl.clientWidth;
-				if (!clientWidth) return;
-				docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
-			};
-			if (!doc.addEventListener) return;
-			win.addEventListener(resizeEvt, recalc, false);
-			doc.addEventListener('DOMContentLoaded', recalc, false);
-		})(document, window);
-	</script>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <title>周年庆典</title>
+    <link rel="stylesheet" href="./static/swiper.min.css">
+    <style>
+
+
+    </style>
+    <script src="/static/swiper.min.js"></script>
+    <script>
+        //声明_czc对象:
+        var _czc = _czc || [];
+        //绑定siteid，请用您的siteid替换下方"XXXXXXXX"部分
+        _czc.push(["_setAccount", "1259421891"]);
+
+    </script>
+    <script>
+        var init = false,
+            bri = {};
+
+        function connectWebViewJavascriptBridge(callback) {
+            if (window.WebViewJavascriptBridge) {
+                return callback(WebViewJavascriptBridge);
+            }
+            if (window.WVJBCallbacks) {
+                return window.WVJBCallbacks.push(callback);
+            }
+            window.WVJBCallbacks = [callback];
+            var WVJBIframe = document.createElement('iframe');
+            WVJBIframe.style.display = 'none';
+            WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
+            document.documentElement.appendChild(WVJBIframe);
+            setTimeout(function() {
+                document.documentElement.removeChild(WVJBIframe)
+            }, 0)
+        };
+        connectWebViewJavascriptBridge(function(bridge) {
+            init = true;
+            bri = bridge;
+        });
+        (function(doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function() {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+
+    </script>
 </head>
+
 <body>
-	<!-- <script src="http://s95.cnzz.com/z_stat.php?id=1259421891&web_id=1259421891" language="JavaScript"></script> -->
-	<div id="app"></div>
-	<!-- built files will be auto injected -->
+    <!-- <script src="http://s95.cnzz.com/z_stat.php?id=1259421891&web_id=1259421891" language="JavaScript"></script> -->
+    <div id="app"></div>
+    <canvas id="hosisora" width="640" height="1136"></canvas>
+    <!-- built files will be auto injected -->
 </body>
-<script src="https://unpkg.com/tween.js@16.3.4"></script>
+
 </html>
