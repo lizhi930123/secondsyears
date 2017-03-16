@@ -11,6 +11,7 @@ Vue.use(VueResource);
 const store = new Vuex.Store({
 	state: {
 		accesstoken:false,
+		swi:[false,false,false,false,false,false,false,false],
 	},
 	//此为同步方法
 	mutations: {
