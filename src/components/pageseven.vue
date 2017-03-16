@@ -13,7 +13,7 @@
       </ul>
     </div>
     <div class="content" v-show="!content">
-      <img src="./../assets/Group.png" alt="">
+      <img src="./../assets/Group.png" class="group">
     </div>
     <button :class="{wish:true,active:active}" @touchstart="f_touch($event)" @touchend="f_touch($event)">祝福名朋</button>
     <p :class="{share:true,active:act}" @touchstart="f_touch($event)" @touchend="f_touch($event)">分享给小伙伴</p>
@@ -133,6 +133,7 @@
  }
  .content{
   height:9.1rem;
+  position: relative;
  }
  .con>p:nth-child(1){
   color:#F8E81C;
@@ -175,5 +176,12 @@
 .share.active{
   transform:scale(.95,.95);
   -webkit-transform:scale(.95,.95);
+  }
+  .group{
+    position: absolute;
+    display: block;
+    width:6.3rem;
+    bottom:0;
+    left:0;
   }
 </style>
