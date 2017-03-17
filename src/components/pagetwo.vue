@@ -2,11 +2,11 @@
 <div class="container">
     <div :class="{animated:true,data:true,fadeIn:this.$store.state.swi[1]}">
       <p>这两年</p>
-      <p>我在名朋世界里入住了<span :class="{animated:true,big:true,loginday:true,rubberBand:this.$store.state.swi[1]}">60</span>天</p>
+      <p>我在名朋世界里入住了<tween :class="{animated:true,big:true,loginday:true,opashow:this.opashow1}" :value="number1"></tween>天</p>
       <p :class="{animated:true,date:true,wobble:this.$store.state.swi[1]}">2015年4月17日</p>
       <p>你入住了名朋</p>
     </div>
-    <p :class="{animated:true,playdays:true,fadeIn:this.$store.state.swi[1]}">登陆天数<span :class="{animated:true,big:true,swing:this.$store.state.swi[1]}">375</span>天</p>
+    <p :class="{animated:true,playdays:true,fadeIn:this.$store.state.swi[1]}">登陆天数<tween :class="{animated:true,big:true,opashow:this.opashow2}" :value="number2"></tween>天</p>
     <img src="./../assets/city.png" class="city mymove1">
     <img src="./../assets/bottomimg.gif" class="bottomimg">
     <img src="./../assets/twopage.png" :class="{two:true,animated:true,fadeIn2:this.$store.state.swi[1]}">
@@ -14,17 +14,39 @@
 </div>
 </template>
 <script>
+import tween from './tween'
   export default({
     props:['propstwo'],
     data(){
       return{
         time:false,
+        number1:0,
+        number2:0,
+        opashow1:false,
+        opashow2:false,
       }
+    },
+    components:{
+      tween
     },
     watch:{
       propstwo:function(){
+        this.number1=0;
+        this.number2=0;
+        this.opashow1=false;
+        this.opashow2=false;
         clearTimeout(this.time);
         this.animation();
+        var m=this;
+        setTimeout(function(){
+          m.number1=60;
+          m.opashow1=true;
+        },1800);
+        setTimeout(function(){
+          m.number2=375;
+          m.opashow2=true;
+        },3800)
+        
       }
     },
     mounted:function(){
@@ -77,6 +99,9 @@
   top:6.717rem;
   left:4.041rem;
   z-index:999;
+}
+.opashow{
+  opacity:1;
 }
 p.tishi{
   position: absolute;

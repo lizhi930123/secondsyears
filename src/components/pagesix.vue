@@ -3,9 +3,9 @@
 <img src="./../assets/bottomimg.gif" class="bottomimg">
 <div :class="{animated:true,data:true,fadeInLeft:this.$store.state.swi[5]}">
   <p>名朋世界中</p>
-  <p>有<span :class="{big:true,animated:true,zoomIn3:this.$store.state.swi[5]}">100</span>个好友</p>
+  <p>有<tween :class="{big:true,animated:true,opashow:opashow1}" :value="number1">100</tween>个好友</p>
   <p>悄悄的特别关心了你~</p>
-  <p>超过<span :class="{animated:true,flash:this.$store.state.swi[5]}">100%</span>的居民</p>
+  <p>超过<span :class="{animated:true,zoomIn3:this.$store.state.swi[5]}">100%</span>的居民</p>
 </div>
 <img src="./../assets/phone.png" class="phone mymove1">
 <img src="./../assets/headimg.png" class="headimg1 mymove2">
@@ -24,18 +24,31 @@
 </div>
 </template>
 <script>
+import tween from './tween'
   export default({
     props:['propssix'],
     data(){
       return{
         time:false,
+        opashow1:false,
+        number1:0,
       }
+    },
+      components:{
+      tween
     },
     watch:{
       propssix:function(){
+        this.number1=0;
+        this.opashow1=false;
         clearTimeout(this.time);
         this.animation();
-         this.$store.state.showcicle=true;
+        var m=this;
+        setTimeout(function(){
+          m.number1=100;
+          m.opashow1=true;
+        },1800);
+        this.$store.state.showcicle=true;
       }
     },
     mounted:function(){
@@ -53,6 +66,9 @@
   })
 </script>
 <style scoped>
+.opashow{
+  opacity: 1;
+}
 img{
   position: absolute;
   display: block;

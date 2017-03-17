@@ -80,6 +80,7 @@
             propsseven: function() {
                 clearTimeout(this.time);
                 this.animation();
+                this.$store.state.showcicle=false;
             }
         },
         mounted: function() {},
