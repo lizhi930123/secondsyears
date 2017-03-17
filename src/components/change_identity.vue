@@ -10,9 +10,14 @@
                 <div id="identity" v-for = "(item,index) in 20">
                         <div id="img">   
                             <img class="imgs" src="../assets/pikaqiu.png" alt="" @click = "select_identity(index)">
-                                <div id="gou_box" v-if="gou1[index]">
-                                    <img src="../assets/gou.png" alt="">
+                                <transition-group name="gou">
+                                <div id="gou_box" v-show="gou1[index]" :key="index">
+                                <transition-group name="gou">
+                                    <img class="gou_box_img" src="../assets/gou.png" alt="" :key="index" v-show="gou1[index]">
+                                 </transition-group>
+                                    
                                 </div>
+                                 </transition-group>
                         </div>
                         
                     <div id="name">aweier</div>
@@ -73,7 +78,7 @@
         left: 0;
     }
     
-    #gou_box>img {
+    .gou_box_img {
         width: .4rem;
         height: .4rem;
         position: absolute;
@@ -141,7 +146,6 @@
         float: right;
         width: .34rem;
         margin-right: .14rem;
-        transition: all .2s;
     }
     
     #title {
@@ -187,6 +191,16 @@
     
     .change_identity-enter,
     .change_identity-leave-to {
+        opacity: 0;
+    }
+    
+    .gou-enter-active,
+    .gou-leave-active {
+        transition: all .5s;
+    }
+    
+    .gou-enter,
+    .gou-leave-active {
         opacity: 0;
     }
 
