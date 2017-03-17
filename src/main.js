@@ -10,11 +10,21 @@ Vue.use(VueResource);
 
 const store = new Vuex.Store({
 	state: {
-		accesstoken:false,
+		access_token:'58298c1e6e998f25af9c4cc6.1520494618.e370dd35ffe7917b75718fc28566e1e9',
 		swi:[false,false,false,false,false,false,false,false],
 		showcicle:true,
 		share:false,
  		changeI: false,
+ 		days:0,
+ 		signin:0,
+ 		date:'',
+ 		playlists:[],
+ 		member:0,
+ 		follow:0,
+ 		group:0,
+ 		friends:0,
+ 		wealth_in:0,
+ 		wealth_out:false,
 	},
 	//此为同步方法
 	mutations: {

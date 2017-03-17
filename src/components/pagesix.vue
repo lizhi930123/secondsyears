@@ -3,7 +3,7 @@
 <img src="./../assets/bottomimg.gif" class="bottomimg">
 <div :class="{animated:true,data:true,fadeInLeft:this.$store.state.swi[5]}">
   <p>名朋世界中</p>
-  <p>有<tween :class="{big:true,animated:true,opashow:opashow1}" :value="number1">100</tween>个好友</p>
+  <p>有<tween :class="{big:true,animated:true,opashow:opashow1}" :value="number1"></tween>个好友</p>
   <p>悄悄的特别关心了你~</p>
   <p>超过<span :class="{animated:true,zoomIn3:this.$store.state.swi[5]}">100%</span>的居民</p>
 </div>
@@ -45,7 +45,7 @@ import tween from './tween'
         this.animation();
         var m=this;
         setTimeout(function(){
-          m.number1=100;
+          m.number1=m.$store.state.follow;
           m.opashow1=true;
         },1800);
         this.$store.state.showcicle=true;

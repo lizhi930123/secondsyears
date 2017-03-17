@@ -42,11 +42,11 @@ import tween from './tween'
         this.animation();
         var m=this;
         setTimeout(function(){
-          m.number1=9999;
+          m.number1=m.$store.state.wealth_out;
           m.opashow1=true;
         },1800);
         setTimeout(function(){
-          m.number2=9999;
+          m.number2=m.$store.state.wealth_in;
           m.opashow2=true;
         },4000)
       }

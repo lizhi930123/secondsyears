@@ -2,13 +2,13 @@
 <div class="container">
     <div class="data" :class="{animated:true,fadeInLeft:this.$store.state.swi[2]}">
       <p>这两年</p>
-      <p>我扮演过<tween :class="{animated:true,big:true,opashow:opashow1}" :value="number1">999</tween>个角色</p>
+      <p>我扮演过<tween :class="{animated:true,big:true,opashow:opashow1}" :value="number1"></tween>个角色</p>
       <p>超过<span :class="{animated:true,wobble:this.$store.state.swi[2]}">70%</span>的用户</p>
     </div>
     <div class="friends" :class="{animated:true,fadeInLeft:this.$store.state.swi[2]}">
-      <p>有<tween :class="{animated:true,friendnum:true,big:true,opashow:opashow2}" :value="number2">999</tween>个好友</p>
+      <p>有<tween :class="{animated:true,friendnum:true,big:true,opashow:opashow2}" :value="number2"></tween>个好友</p>
       <p>超过<span :class="{animated:true,pecent:true,flipInY2:this.$store.state.swi[2]}">50%</span>的用户</p>
-      <p>加过<tween :class="{animated:true,qunnum:true,big:true,opashow:opashow3}" :value="number3">21</tween>个群</p>
+      <p>加过<tween :class="{animated:true,qunnum:true,big:true,opashow:opashow3}" :value="number3"></tween>个群</p>
       <p>超过<span :class="{animated:true,percent:true,bounceInUp2:this.$store.state.swi[2]}">50%</span>的用户</p>
     </div>
     <img src="./../assets/iphone.png" class="iphone mymove1">
@@ -57,15 +57,15 @@ import tween from './tween'
         this.animation();
         var m=this;
         setTimeout(function(){
-          m.number1=999;
+          m.number1=m.$store.state.member;
           m.opashow1=true;
         },2000);
         setTimeout(function(){
-          m.number2=999;
+          m.number2=m.$store.state.friends;
           m.opashow2=true;
         },3500);
          setTimeout(function(){
-          m.number3=21;
+          m.number3=m.$store.state.group;
           m.opashow3=true;
         },4800)
       }
@@ -85,9 +85,6 @@ import tween from './tween'
   })
 </script>
 <style scoped>
-.opashow{
-  opacity: 1;
-}
   p{
     font-size:.3rem;
     line-height:.5rem;

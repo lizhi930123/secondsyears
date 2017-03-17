@@ -3,7 +3,7 @@
     <div :class="{animated:true,data:true,fadeIn:this.$store.state.swi[1]}">
       <p>这两年</p>
       <p>我在名朋世界里入住了<tween :class="{animated:true,big:true,loginday:true,opashow:this.opashow1}" :value="number1"></tween>天</p>
-      <p :class="{animated:true,date:true,wobble:this.$store.state.swi[1]}">2015年4月17日</p>
+      <p :class="{animated:true,date:true,wobble:this.$store.state.swi[1]}">{{this.$store.state.date}}</p>
       <p>你入住了名朋</p>
     </div>
     <p :class="{animated:true,playdays:true,fadeIn:this.$store.state.swi[1]}">登陆天数<tween :class="{animated:true,big:true,opashow:this.opashow2}" :value="number2"></tween>天</p>
@@ -39,11 +39,11 @@ import tween from './tween'
         this.animation();
         var m=this;
         setTimeout(function(){
-          m.number1=60;
+          m.number1=m.$store.state.days;
           m.opashow1=true;
         },1800);
         setTimeout(function(){
-          m.number2=375;
+          m.number2=m.$store.state.signin;
           m.opashow2=true;
         },3800)
         
