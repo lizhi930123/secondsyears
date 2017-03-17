@@ -12,6 +12,8 @@ const store = new Vuex.Store({
 	state: {
 		accesstoken:false,
 		swi:[false,false,false,false,false,false,false,false],
+		showcicle:true,
+		share:false,
 	},
 	//此为同步方法
 	mutations: {

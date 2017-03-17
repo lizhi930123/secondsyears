@@ -1,9 +1,9 @@
 //此文件为主入口
 <template>
 <div id="app">
-  <img src="./../assets/cicleone.png" class="cicleone mymove1">
-  <img src="./../assets/cicletwo.png" class="cicletwo mymove2">
-  <img src="./../assets/ciclethree.png" class="ciclethree mymove3">
+  <img src="./../assets/cicleone.png" class="cicleone mymove1" v-show="this.$store.state.showcicle">
+  <img src="./../assets/cicletwo.png" class="cicletwo mymove2" v-show="this.$store.state.showcicle">
+  <img src="./../assets/ciclethree.png" class="ciclethree mymove3" v-show="this.$store.state.showcicle">
 	<div class="swiper-container">
 	    <div class="swiper-wrapper">
 	        <div class="swiper-slide"><pageone :propsone="propsone"></pageone></div>
@@ -12,8 +12,7 @@
 	       	<div class="swiper-slide"><pagefour :propsfour="propsfour"></pagefour></div>
 	       	<div class="swiper-slide"><pagefive :propsfive="propsfive"></pagefive></div>
 	       	<div class="swiper-slide"><pagesix :propssix="propssix"></pagesix></div>
-	        <div class="swiper-slide"><pageseven :propsseven="propsseven"></pageseven></div>
-	       	<div class="swiper-slide"><pageeight :propseight="propseight"></pageeight></div>
+	        <div class="swiper-slide"><share v-if="this.$store.state.share"></share><pageseven :propsseven="propsseven"></pageseven></div>
 	    </div>
 	</div>
 </div>
@@ -27,7 +26,7 @@ import pagefour from './pagefour'
 import pagefive from './pagefive'
 import pagesix from './pagesix'
 import pageseven from './pageseven'
-import pageeight from './pageeight'
+import share from './share'
 export default {
 	name: 'app',
 	data() {
@@ -50,7 +49,7 @@ export default {
 		pagefive,
 		pagesix,
 		pageseven,
-		pageeight
+		share
 	},
 	mounted: function(){
 		for(var a=document.cookie.split(';'),i=0;i<a.length;i++){

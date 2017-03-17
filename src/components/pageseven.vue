@@ -12,7 +12,7 @@
         </li>
       </ul>
     </div>
-    <div id="zindex" :class="{animated:true,content:true,fadeInRight:fadeOutLeft}">
+    <div :class="{animated:true,content:true,fadeInRight:fadeOutLeft}">
       <img src="./../assets/Group.png" class="group">
       <div class="wish_content">
           <textarea maxlength="100" v-model="val" placeholder="输入你想对名朋说的话"></textarea>
@@ -24,7 +24,7 @@
       </div>
     </div>
     <button :class="{wish:true,active:active}" @touchstart="f_touch($event)" @touchend="f_touch($event)" @click="push_wish">{{str}}</button>
-    <p :class="{share:true,active:act}" @touchstart="f_touch($event)" @touchend="f_touch($event)">分享给小伙伴</p>
+    <p :class="{share:true,active:act}" @touchstart="f_touch($event)" @touchend="f_touch($event)" @click="shareTo">分享给小伙伴</p>
 </div>
 </template>
 <script>
@@ -80,6 +80,7 @@
       propsseven:function(){
         clearTimeout(this.time);
         this.animation();
+        this.$store.state.showcicle=false;
       }
     },
     mounted:function(){
@@ -113,6 +114,9 @@
         }else{
         }
       },
+      shareTo:function(){
+        this.$store.state.share=true;
+      }
 
     }
   })
@@ -165,8 +169,6 @@
  }
  #opa{
   opacity: 1;
- }
- #z-index{
   z-index: 999;
  }
  .con>p:nth-child(1){

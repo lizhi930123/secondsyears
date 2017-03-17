@@ -38,15 +38,6 @@
 </script>
 <style>
 @charset "UTF-8";
-	div.container{
-		width:100%;
-		height:10.85rem;
-    overflow:hidden;
-    background: transparent;
-    position: absolute;
-    top:50%;
-    margin-top:-5.425rem;
-	}
   .logo{
     float:left;
     display: block;

@@ -8,9 +8,9 @@
     <p>你们现在还有联系吗</p>
   </div>
   <div :class="{animated:true,cp:true,fadeInDownBig:this.$store.state.swi[3]}">
-    <p>第一个cp是<span :class="{animated:true,name:true,wobble:this.$store.state.swi[3]}">是电大师傅是巴基涉及计算机的飞机</span></p>
+    <p>第一个cp是<span :class="{animated:true,name:true,wobble:this.$store.state.swi[3]}">露给</span></p>
     <p>你们现在还彼此相爱吗</p>
-    <p>第一个群是<span :class="{animated:true,name:true,wobble:this.$store.state.swi[3]}">海贼王唐吉坷德家族战队</span></p>
+    <p>第一个群是<span :class="{animated:true,name:true,wobble:this.$store.state.swi[3]}">海贼王唐</span></p>
     <p>你们现在还在一起畅谈吗</p>
   </div>
   <img src="./../assets/swiming.png" class="swiming mymove1">

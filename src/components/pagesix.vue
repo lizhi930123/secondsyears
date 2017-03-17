@@ -19,7 +19,7 @@
 <img src="./../assets/yellowpeople.png" class="yellow2 mymove4">
 <img src="./../assets/heart3.png" :class="{animated:true,heart3:true,zoomIn2:this.$store.state.swi[5]}">
 <img src="./../assets/heart4.png" :class="{animated:true,heart4:true,zoomIn2:this.$store.state.swi[5]}">
-<img src="./../assets/six.png" :class="{six:true,fadeIn6:this.$store.state.swi[5]}">
+<img src="./../assets/six.png" :class="{six:true,animated:true,fadeIn6:this.$store.state.swi[5]}">
 <p :class="{tishi:true,animated:true,fadeIn6:this.$store.state.swi[5]}">哇哇哇哇哇，原来我人气这么旺！</p>
 </div>
 </template>
@@ -35,6 +35,7 @@
       propssix:function(){
         clearTimeout(this.time);
         this.animation();
+         this.$store.state.showcicle=true;
       }
     },
     mounted:function(){
