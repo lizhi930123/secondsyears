@@ -7,9 +7,9 @@
             </div>
                 <div id="identity_scroll">
                     
-                <div id="identity" v-for = "(item,index) in 20">
+                <div id="identity" v-for = "(item,index) in $store.state.users">
                         <div id="img">   
-                            <img class="imgs" src="../assets/pikaqiu.png" alt="" @click = "select_identity(index)">
+                            <img class="imgs" :src="item.headimg" alt="" @click = "select_identity(index,item)">
                                 <transition-group name="gou">
                                 <div id="gou_box" v-show="gou1[index]" :key="index">
                                 <transition-group name="gou">
@@ -20,11 +20,11 @@
                                  </transition-group>
                         </div>
                         
-                    <div id="name">aweier</div>
+                    <div id="name">{{item.name}}</div>
                 </div>
                 </div>
         </div>
-        <div id="queren" @click.stop = "queren" @touchstart = "scale" @touchend = "scale" :class = "{_scale:scale1}">确认</div>
+        <div id="queren" @click.stop = "disapear" @touchstart = "scale" @touchend = "scale" :class = "{_scale:scale1}">确认</div>
     </div>
     </transition>
 </template>
@@ -43,22 +43,20 @@
             console.log(this.gou1)
         },
         methods: {
-            select_identity: function(index) {
+            select_identity: function(index, item) {
                 this.gou1 = [];
                 this.gou1[index] = true;
                 //save index
+                this.$store.state.current_user = item;
+                console.log(item._id)
             },
             disapear: function() {
                 this.$store.state.changeI = false;
             },
             gou_init: function() {
-                for (let i = 0; i < 20; i++) {
+                for (let i = 0, l = this.$store.state.users.length; i < l; i++) {
                     this.gou1[i] = false;
                 }
-            },
-            queren: function() {
-
-                //                this.$store.state.changeI = false;
             },
             scale: function() {
                 this.scale1 = !this.scale1;
@@ -125,7 +123,7 @@
         background-color: white;
         border-radius: 4px;
         overflow: hidden;
-        border: 2px solid #F8E81C;
+        border: 1px solid #F8E81C;
         position: relative;
     }
     
@@ -140,6 +138,9 @@
         margin-top: .1rem;
         text-align: center;
         color: #F8E81C;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
     
     #close {

@@ -18,8 +18,8 @@
       <div class="wish_content">
           <textarea maxlength="100" v-model="val" placeholder="输入你想对名朋说的话"></textarea>
           <div class="changeuser">
-            <div></div>
-            <div class="check_name">艾薇儿 NO.5214</div>
+            <div><img id="tupian" :src="$store.state.current_user.headimg" alt=""></div>
+            <div class="check_name">{{$store.state.current_user.name}} &nbsp;NO.{{$store.state.current_user.no}}</div>
             <div :class="{active:changeuser}" @touchstart="f_touch_change" @touchend="f_touch_change" @click="f_change"><img src="./../assets/change.png">切换身份</div>
           </div>
       </div>
@@ -41,8 +41,8 @@
                 val: '',
                 str: '祝福名朋',
                 fadeOutLeft: false,
-                fadeOutRight:false,
-                back:false,
+                fadeOutRight: false,
+                back: false,
                 items: [{
                     headimg: '',
                     username: '艾薇儿',
@@ -80,18 +80,18 @@
             propsseven: function() {
                 clearTimeout(this.time);
                 this.animation();
-                this.$store.state.showcicle=false;
+                this.$store.state.showcicle = false;
             }
         },
         mounted: function() {},
         methods: {
-            backto:function(){
-                this.fadeOutLeft=false;
-                this.fadeOutRight=true;
+            backto: function() {
+                this.fadeOutLeft = false;
+                this.fadeOutRight = true;
                 this.str = '祝福名朋';
             },
-            f_touch_back:function(){
-                this.back=!this.back;
+            f_touch_back: function() {
+                this.back = !this.back;
             },
             animation: function() {
                 var me = this;
@@ -116,20 +116,25 @@
             },
             push_wish: function() {
                 if (this.str == '祝福名朋') {
-                    this.fadeOutRight=false;
+                    this.fadeOutRight = false;
                     this.fadeOutLeft = true;
                     this.str = "写下祝福";
                 } else {}
             },
-            shareTo:function(){
-                this.$store.state.share=true;
-              }
+            shareTo: function() {
+                this.$store.state.share = true;
+            }
 
         }
     })
 
 </script>
 <style scoped>
+    #tupian {
+        width: 100%;
+        display: block;
+    }
+    
     div.content {
         overflow: hidden;
         margin-left: .6rem;
@@ -148,6 +153,7 @@
         margin-top: .2rem;
         -webkit-overflow-scrolling: touch;
     }
+    
     .list>li {
         width: 100%;
         padding: .3rem;
@@ -226,11 +232,13 @@
         text-align: center;
     }
     
-    .wish.active,.back.active,.share.active {
+    .wish.active,
+    .back.active,
+    .share.active {
         transform: scale(.95, .95);
         -webkit-transform: scale(.95, .95);
     }
-
+    
     .changeuser>div:nth-child(3).active {
         transform: scale(.95, .95);
         -webkit-transform: scale(.95, .95);
@@ -277,6 +285,7 @@
         height: .48rem;
         background: white;
         border-radius: 50%;
+        overflow: hidden;
     }
     
     .changeuser>div:nth-child(2) {
@@ -307,9 +316,11 @@
         top: .05rem;
         margin-right: .1rem;
     }
-    .back{
+    
+    .back {
         display: block;
-        width:.6rem;
-        margin:.4rem 0 0 .4rem;
+        width: .6rem;
+        margin: .4rem 0 0 .4rem;
     }
+
 </style>

@@ -99,13 +99,14 @@
                     }
                 },
             })
-            if(this.$store.state.access_token){
-              this.get_userinfo();
+            if (this.$store.state.access_token) {
+                this.get_userinfo();
+                this.get_play();
             }
         },
         methods: {
-            get_userinfo:function(){
-             this.$http({
+            get_userinfo: function() {
+                this.$http({
                     method: 'get',
                     url: 'http://test.mrpyq.com/annual2/account_info',
                     params: {
@@ -114,18 +115,18 @@
                     emulateJSON: true
                 }).then((res) => {
                     console.log(res.body);
-                    this.$store.state.days=res.body.days;
-                    this.$store.state.signin=res.body.signin;
-                    this.$store.state.date=res.body.ts;
-                    this.$store.state.member=res.body.stat.member?res.body.stat.member:0;
-                    this.$store.state.follow=res.body.stat.follow?res.body.stat.follow:0;
-                    this.$store.state.friends=res.body.stat.friends?res.body.stat.friend:0;
-                    this.$store.state.group=res.body.stat.group?res.body.stat.group:0;
-                    this.$store.state.wealth_in=res.body.wealth_in;
-                    this.$store.state.wealth_out=res.body.wealth_out;
+                    this.$store.state.days = res.body.days;
+                    this.$store.state.signin = res.body.signin;
+                    this.$store.state.date = res.body.ts;
+                    this.$store.state.member = res.body.stat.member ? res.body.stat.member : 0;
+                    this.$store.state.follow = res.body.stat.follow ? res.body.stat.follow : 0;
+                    this.$store.state.friends = res.body.stat.friends ? res.body.stat.friend : 0;
+                    this.$store.state.group = res.body.stat.group ? res.body.stat.group : 0;
+                    this.$store.state.wealth_in = res.body.wealth_in;
+                    this.$store.state.wealth_out = res.body.wealth_out;
                 })
             },
-            get_play:function(){
+            get_play: function() {
                 this.$http({
                     method: 'get',
                     url: 'http://test.mrpyq.com/api/account/members_by_me',
@@ -135,8 +136,8 @@
                     emulateJSON: true
                 }).then((res) => {
                     console.log(res.body);
-                    this.$store.state.playlists=res.body.items;
-                    this.$store.state.current_user=res.body.items[0];
+                    this.$store.state.users = res.body.items;
+                    this.$store.state.current_user = res.body.items[0];
                 })
             },
         }
