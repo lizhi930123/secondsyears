@@ -24,7 +24,8 @@ const store = new Vuex.Store({
  		group:0,
  		friends:0,
  		wealth_in:0,
- 		wealth_out:false,
+ 		wealth_out:0,
+ 		current_user:false,
 	},
 	//此为同步方法
 	mutations: {

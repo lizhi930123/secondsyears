@@ -101,7 +101,6 @@
             })
             if(this.$store.state.access_token){
               this.get_userinfo();
-              this.get_play();
             }
         },
         methods: {
@@ -137,6 +136,7 @@
                 }).then((res) => {
                     console.log(res.body);
                     this.$store.state.playlists=res.body.items;
+                    this.$store.state.current_user=res.body.items[0];
                 })
             },
         }
