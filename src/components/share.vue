@@ -108,7 +108,6 @@
   .share ul{
     width:100%;
     margin-top: .51rem;
-    overflow:hidden;
   }
   .share li{
     width:20%;

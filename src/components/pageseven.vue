@@ -1,6 +1,6 @@
 <template>
 <div class="container">
-    <div id="opa" :class="{animated:true,content:true,fadeOutLeft:fadeOutLeft}">
+    <div id="opa" :class="{animated:true,content:true,fadeOutLeft:fadeOutLeft,fadeInLeft:fadeOutRight}">
       <p class="say">对名朋想说的话</p>
       <ul class="list" @touchmove.stop>
         <li v-for="item in items">
@@ -12,8 +12,9 @@
         </li>
       </ul>
     </div>
-    <div :class="{animated:true,content:true,fadeInRight:fadeOutLeft}">
+    <div :class="{animated:true,content:true,fadeInRight:fadeOutLeft,fadeOutRight:fadeOutRight}">
       <img src="./../assets/Group.png" class="group">
+      <img src="./../assets/back.png" :class="{back:true,active:back}" @touchstart="f_touch_back" @touchend="f_touch_back" @click="backto">
       <div class="wish_content">
           <textarea maxlength="100" v-model="val" placeholder="输入你想对名朋说的话"></textarea>
           <div class="changeuser">
@@ -40,6 +41,8 @@
                 val: '',
                 str: '祝福名朋',
                 fadeOutLeft: false,
+                fadeOutRight:false,
+                back:false,
                 items: [{
                     headimg: '',
                     username: '艾薇儿',
@@ -81,6 +84,14 @@
         },
         mounted: function() {},
         methods: {
+            backto:function(){
+                this.fadeOutLeft=false;
+                this.fadeOutRight=true;
+                this.str = '祝福名朋';
+            },
+            f_touch_back:function(){
+                this.back=!this.back;
+            },
             animation: function() {
                 var me = this;
                 me.$store.state.swi = [];
@@ -104,6 +115,7 @@
             },
             push_wish: function() {
                 if (this.str == '祝福名朋') {
+                    this.fadeOutRight=false;
                     this.fadeOutLeft = true;
                     this.str = "写下祝福";
                 } else {}
@@ -135,7 +147,6 @@
         margin-top: .2rem;
         -webkit-overflow-scrolling: touch;
     }
-    
     .list>li {
         width: 100%;
         padding: .3rem;
@@ -214,16 +225,11 @@
         text-align: center;
     }
     
-    .wish.active {
+    .wish.active,.back.active,.share.active {
         transform: scale(.95, .95);
         -webkit-transform: scale(.95, .95);
     }
-    
-    .share.active {
-        transform: scale(.95, .95);
-        -webkit-transform: scale(.95, .95);
-    }
-    
+
     .changeuser>div:nth-child(3).active {
         transform: scale(.95, .95);
         -webkit-transform: scale(.95, .95);
@@ -300,5 +306,9 @@
         top: .05rem;
         margin-right: .1rem;
     }
-
+    .back{
+        display: block;
+        width:.6rem;
+        margin:.4rem 0 0 .4rem;
+    }
 </style>
