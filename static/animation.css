@@ -868,8 +868,8 @@
 .fadeOutLeft {
   -webkit-animation-name: fadeOutLeft;
   animation-name: fadeOutLeft;
-    animation-duration: .5s;
-  -webkit-animation-duration: .5s;
+    animation-duration: .8s;
+  -webkit-animation-duration: .8s;
 }
 @-webkit-keyframes fadeInRight {
   from {
@@ -902,6 +902,52 @@
 .fadeInRight {
   -webkit-animation-name: fadeInRight;
   animation-name: fadeInRight;
-  animation-duration: .5s;
-  -webkit-animation-duration: .5s;
+  animation-duration: .8s;
+  -webkit-animation-duration: .8s;
+}
+@-webkit-keyframes fadeInLeftBig {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+.bounceInUp71{
+  -webkit-animation-name: bounceInUp;
+  animation-name: bounceInUp;
+}
+.bounceInUp72{
+  -webkit-animation-name: bounceInUp;
+  animation-name: bounceInUp;
+  animation-delay: .1s;
+  -webkit-animation-delay: .1s;
+}
+.bounceInUp73{
+  -webkit-animation-name: bounceInUp;
+  animation-name: bounceInUp;
+  animation-delay: .2s;
+  -webkit-animation-delay: .2s;
+}
+.bounceInUp74{
+  -webkit-animation-name: bounceInUp;
+  animation-name: bounceInUp;
+  animation-delay: .3s;
+  -webkit-animation-delay: .3s;
+}
+.bounceInUp75{
+  -webkit-animation-name: bounceInUp;
+  animation-name: bounceInUp;
+  animation-delay: .4s;
+  -webkit-animation-delay: .4s;
+}
+.bounceInUp76{
+  -webkit-animation-name: bounceInUp;
+  animation-name: bounceInUp;
+  animation-delay: .5s;
+  -webkit-animation-delay: .5s;
 }

@@ -1,15 +1,15 @@
 <template>
 <transition name="sharedh">
   <div class="share" @touchmove.stop>
-    <div class="share_content">
+    <div class="share_content animated bounceInUp71">
           <p class="shareTo">分享页面至</p>
           <img src="./../assets/close.png" :class="{close:true,active:active6}" @touchstart="f_touch($event)" @touchend="f_touch($event)" @click="close" data-name="close">
           <ul id="share"  @click="share($event)" @touchstart="f_touch($event)" @touchend="f_touch($event)">
-              <li data-name="WEIXIN" :class="{animated:true,fadeInLeftBig1:true}"><img src="./../assets/weichat.png" data-name="WEIXIN" :class="{active:active1}"><span data-name="WEIXIN">微信</span></li>
-              <li data-name="WEIXIN_CIRCLE" :class="{animated:true,fadeInLeftBig2:true}"><img src="./../assets/friend.png" data-name="WEIXIN_CIRCLE" :class="{active:active2}"><span data-name="WEIXIN_CIRCLE">朋友圈</span></li>
-              <li data-name="QQ" :class="{animated:true,fadeInLeftBig3:true}"><img src="./../assets/qq.png" data-name="QQ" :class="{active:active3}"><span data-name="QQ">QQ</span></li>
-              <li data-name="QZONE" :class="{animated:true,fadeInLeftBig4:true}"><img src="./../assets/qzone.png" data-name="QZONE" :class="{active:active4}"><span data-name="QZONE">空间</span></li>
-              <li data-name="SINA" :class="{animated:true,fadeInLeftBig5:true}"><img src="./../assets/weibo.png" data-name="SINA" :class="{active:active5}"><span data-name="SINA">微博</span></li>
+              <li data-name="WEIXIN" class="animated bounceInUp72"><img src="./../assets/weichat.png" data-name="WEIXIN" :class="{active:active1}"><span data-name="WEIXIN">微信</span></li>
+              <li data-name="WEIXIN_CIRCLE" class="animated bounceInUp73"><img src="./../assets/friend.png" data-name="WEIXIN_CIRCLE" :class="{active:active2}"><span data-name="WEIXIN_CIRCLE">朋友圈</span></li>
+              <li data-name="QQ" class="animated bounceInUp74"><img src="./../assets/qq.png" data-name="QQ" :class="{active:active3}"><span data-name="QQ">QQ</span></li>
+              <li data-name="QZONE" class="animated bounceInUp75"><img src="./../assets/qzone.png" data-name="QZONE" :class="{active:active4}"><span data-name="QZONE">空间</span></li>
+              <li data-name="SINA" class="animated bounceInUp76"><img src="./../assets/weibo.png" data-name="SINA" :class="{active:active5}"><span data-name="SINA">微博</span></li>
           </ul>
     </div>
 </div>

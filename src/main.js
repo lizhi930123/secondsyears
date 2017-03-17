@@ -14,6 +14,7 @@ const store = new Vuex.Store({
 		swi:[false,false,false,false,false,false,false,false],
 		showcicle:true,
 		share:false,
+ 		changeI: false,
 	},
 	//此为同步方法
 	mutations: {
