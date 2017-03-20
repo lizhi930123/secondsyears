@@ -12,7 +12,15 @@
 	       	<div class="swiper-slide"><pagefour :propsfour="propsfour"></pagefour></div>
 	       	<div class="swiper-slide"><pagefive :propsfive="propsfive"></pagefive></div>
 	       	<div class="swiper-slide"><pagesix :propssix="propssix"></pagesix></div>
-	        <div class="swiper-slide"><othershare v-if="this.$store.state.othershare"></othershare><change_identity></change_identity><share v-if="this.$store.state.share"></share><pageseven :propsseven="propsseven"></pageseven></div>
+	        <div class="swiper-slide">
+                <othershare v-if="this.$store.state.othershare"></othershare>
+                <change_identity></change_identity>
+                <share v-if="this.$store.state.share"></share>
+                <transition name="fade" mode="out-in">
+                    <pageseven :propsseven="propsseven" v-if="$store.state.seven"></pageseven>
+                    <xiazai v-else></xiazai>
+                </transition>
+	        </div>
 	    </div>
 	</div>
 </div>
@@ -35,6 +43,7 @@
     import change_identity from './change_identity'
     import share from './share'
     import othershare from './othershare'
+    import xiazai from './xiazai'
     export default {
         name: 'app',
         data() {
@@ -61,6 +70,7 @@
             change_identity,
             share,
             othershare,
+            xiazai,
         },
         mounted: function() {
             for (var a = document.cookie.split(';'), i = 0; i < a.length; i++) {
@@ -70,7 +80,6 @@
             }
             if (this.$store.state.access_token == '') {
                 if (location.href.split('?')[1]) {
-
                     var href = location.href.split('?')[1].split('&');
                     for (var i = 0; i < href.length; i++) {
                         if (href[i].match(/access_token/i)) {
@@ -266,6 +275,16 @@
     span.big {
         font-size: .5rem;
         line-height: .3rem;
+    }
+    
+    .fade-enter-active,
+    .fade-leave-active {
+        transition: all .5s;
+    }
+    
+    .fade-enter,
+    .fade-leave-to {
+        opacity: 0;
     }
 
 </style>

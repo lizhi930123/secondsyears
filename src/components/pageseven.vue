@@ -43,8 +43,8 @@
                 fadeOutLeft: false,
                 fadeOutRight: false,
                 back: false,
-                show:false,
-                inp:'输入你想对名朋说的话,限制100字以内',
+                show: false,
+                inp: '输入你想对名朋说的话,限制100字以内',
                 items: [{
                     headimg: '',
                     username: '艾薇儿',
@@ -86,8 +86,8 @@
             }
         },
         mounted: function() {
-            if(document.cookie.match(/access_token/i)==null){
-                this.str="我也要许愿";
+            if (document.cookie.match(/access_token/i) == null) {
+                this.str = "我也要许愿";
             }
         },
         methods: {
@@ -120,44 +120,39 @@
             f_change: function() {
                 this.$store.state.changeI = true;
             },
-            f_focus:function(){
-                this.inp="输入你想对名朋说的话,限制100字以内";
+            f_focus: function() {
+                this.inp = "输入你想对名朋说的话,限制100字以内";
             },
             push_wish: function() {
                 if (this.str == '祝福名朋') {
                     this.fadeOutRight = false;
                     this.fadeOutLeft = true;
                     this.str = "写下祝福";
-                } else if(this.str=='我也要许愿'){
-                    var useragent = navigator.userAgent;
-                    if(useragent.match(/iPhone\sOS/i) != null && useragent.match(/MicroMessenger/i) != 'MicroMessenger'){
-                        window.location.href="https://itunes.apple.com/cn/app/ming-ren-peng-you-quan/id982115698?mt=8";
-                    }else{
-                        
-                    }
-                }else{
-                    if(this.val==''){
-                        this.inp='请输入内容！';
-                    }else{
-                       this.items.unshift({
-                            headimg:'',
-                            username:this.$store.state.current_user.name,
-                            userno:this.$store.state.current_user.no,
-                            content:this.val,
+                } else if (this.str == '我也要许愿') {
+                    this.$store.state.seven = false;
+                } else {
+                    if (this.val == '') {
+                        this.inp = '请输入内容！';
+                    } else {
+                        this.items.unshift({
+                            headimg: '',
+                            username: this.$store.state.current_user.name,
+                            userno: this.$store.state.current_user.no,
+                            content: this.val,
                         })
                         this.backto();
-                        this.val=''; 
+                        this.val = '';
                     }
-                    
+
                 }
             },
             shareTo: function() {
-                if(document.cookie.match(/access_token/i)){
-                     this.$store.state.share = true;
-                 }else{
-                    this.$store.state.othershare=true;
-                 }
-               
+                if (document.cookie.match(/access_token/i)) {
+                    this.$store.state.share = true;
+                } else {
+                    this.$store.state.othershare = true;
+                }
+
             }
 
         }
@@ -174,15 +169,17 @@
         overflow: hidden;
         margin-left: .6rem;
     }
-    p.ts{
+    
+    p.ts {
         position: absolute;
-        top:.2rem;
-        left:0;
-        width:6.3rem;
-        text-align:center;
-        font-size:.3rem;
-        color:#cf3843;
+        top: .2rem;
+        left: 0;
+        width: 6.3rem;
+        text-align: center;
+        font-size: .3rem;
+        color: #cf3843;
     }
+    
     p.say {
         font-size: .3rem;
         line-height: .44rem;
@@ -215,11 +212,13 @@
         border-radius: 50%;
         background: #fff;
     }
+    
     .con {
         float: left;
         width: 4.5rem;
         margin-left: .3rem;
     }
+    
     .content {
         height: 9.1rem;
         width: 100%;
@@ -227,17 +226,20 @@
         top: 0;
         left: 0;
     }
+    
     #opa {
         opacity: 1;
         z-index: 999;
     }
+    
     .con>p:nth-child(1) {
         color: #F8E81C;
         font-size: .24rem;
         line-height: .33rem;
         width: 100%;
     }
-     .con>p:nth-child(2) {
+    
+    .con>p:nth-child(2) {
         color: #fff;
         font-size: .28rem;
         line-height: .44rem;
@@ -268,9 +270,11 @@
         top: 10.4rem;
         text-align: center;
     }
-    .share>span{
+    
+    .share>span {
         color: #6BCEF7;
     }
+    
     .wish.active,
     .back.active,
     span.active {
@@ -326,6 +330,7 @@
         border-radius: 50%;
         overflow: hidden;
     }
+    
     .changeuser>div:nth-child(2) {
         float: left;
         color: #F8E81C;
