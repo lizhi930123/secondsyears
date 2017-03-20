@@ -68,12 +68,15 @@
                     this.$store.state.access_token = a[i].split('=')[1];
                 }
             }
-            if(this.$store.state.access_token==''){
-                var href=location.href.split('?')[1].split('&');
-                for(var i=0;i<href.length;i++){
-                     if (href[i].match(/access_token/i)) {
-                        this.$store.state.access_token = href[i].split('=')[1];
-                     }
+            if (this.$store.state.access_token == '') {
+                if (location.href.split('?')[1]) {
+
+                    var href = location.href.split('?')[1].split('&');
+                    for (var i = 0; i < href.length; i++) {
+                        if (href[i].match(/access_token/i)) {
+                            this.$store.state.access_token = href[i].split('=')[1];
+                        }
+                    }
                 }
             }
             var me = this;
@@ -150,7 +153,7 @@
                         'access_token': this.$store.state.access_token,
                     },
                     emulateJSON: true
-                }).then((res) =>{
+                }).then((res) => {
                     console.log(res.body);
                     this.$store.state.users = res.body.items;
                 })
