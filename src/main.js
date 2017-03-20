@@ -10,7 +10,8 @@ Vue.use(VueResource);
 
 const store = new Vuex.Store({
     state: {
-        access_token: '58298c1e6e998f25af9c4cc6.1520494618.e370dd35ffe7917b75718fc28566e1e9',
+        access_token: '',
+        //58298c1e6e998f25af9c4cc6.1520494618.e370dd35ffe7917b75718fc28566e1e9
         swi: [false, false, false, false, false, false, false, false],
         showcicle: true,
         share: false,
@@ -26,6 +27,7 @@ const store = new Vuex.Store({
         wealth_out: 0,
         current_user: {},
         users: [],
+        othershare:false,
     },
     //此为同步方法
     mutations: {
