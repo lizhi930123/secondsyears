@@ -16,7 +16,7 @@
       <img src="./../assets/Group.png" class="group">
       <img src="./../assets/back.png" :class="{back:true,active:back}" @touchstart="f_touch_back" @touchend="f_touch_back" @click="backto">
       <div class="wish_content">
-          <textarea maxlength="100" v-model="val" placeholder="输入你想对名朋说的话"></textarea>
+          <textarea maxlength="100" v-model="val" :placeholder="inp" @focus="f_focus"></textarea>
           <div class="changeuser">
             <div><img id="tupian" :src="$store.state.current_user.headimg" alt=""></div>
             <div class="check_name">{{$store.state.current_user.name}} &nbsp;NO.{{$store.state.current_user.no}}</div>
@@ -25,7 +25,7 @@
       </div>
     </div>
     <button :class="{wish:true,active:active}" @touchstart="f_touch($event)" @touchend="f_touch($event)" @click="push_wish">{{str}}</button>
-    <p :class="{share:true,active:act}" @touchstart="f_touch($event)" @touchend="f_touch($event)" @click="shareTo">分享给小伙伴</p>
+    <p class="share"><span :class="{active:act}" @touchstart="f_touch($event)" @touchend="f_touch($event)" @click="shareTo">分享给小伙伴</span></p>
 </div>
 </template>
 <script>
@@ -43,6 +43,8 @@
                 fadeOutLeft: false,
                 fadeOutRight: false,
                 back: false,
+                show:false,
+                inp:'输入你想对名朋说的话,限制100字以内',
                 items: [{
                     headimg: '',
                     username: '艾薇儿',
@@ -83,7 +85,11 @@
                 this.$store.state.showcicle = false;
             }
         },
-        mounted: function() {},
+        mounted: function() {
+            if(document.cookie.match(/access_token/i)==null){
+                this.str="我也要许愿";
+            }
+        },
         methods: {
             backto: function() {
                 this.fadeOutLeft = false;
@@ -102,10 +108,10 @@
                 }, 1000)
             },
             f_touch: function(event) {
-                if (event.target.innerHTML == '祝福名朋' || event.target.innerHTML == '写下祝福') {
-                    this.active = !this.active;
-                } else {
+                if (event.target.innerHTML == '分享给小伙伴') {
                     this.act = !this.act;
+                } else {
+                    this.active = !this.active;
                 }
             },
             f_touch_change: function() {
@@ -114,15 +120,44 @@
             f_change: function() {
                 this.$store.state.changeI = true;
             },
+            f_focus:function(){
+                this.inp="输入你想对名朋说的话,限制100字以内";
+            },
             push_wish: function() {
                 if (this.str == '祝福名朋') {
                     this.fadeOutRight = false;
                     this.fadeOutLeft = true;
                     this.str = "写下祝福";
-                } else {}
+                } else if(this.str=='我也要许愿'){
+                    var useragent = navigator.userAgent;
+                    if(useragent.match(/iPhone\sOS/i) != null && useragent.match(/MicroMessenger/i) != 'MicroMessenger'){
+                        window.location.href="https://itunes.apple.com/cn/app/ming-ren-peng-you-quan/id982115698?mt=8";
+                    }else{
+                        
+                    }
+                }else{
+                    if(this.val==''){
+                        this.inp='请输入内容！';
+                    }else{
+                       this.items.unshift({
+                            headimg:'',
+                            username:this.$store.state.current_user.name,
+                            userno:this.$store.state.current_user.no,
+                            content:this.val,
+                        })
+                        this.backto();
+                        this.val=''; 
+                    }
+                    
+                }
             },
             shareTo: function() {
-                this.$store.state.share = true;
+                if(document.cookie.match(/access_token/i)){
+                     this.$store.state.share = true;
+                 }else{
+                    this.$store.state.othershare=true;
+                 }
+               
             }
 
         }
@@ -139,7 +174,15 @@
         overflow: hidden;
         margin-left: .6rem;
     }
-    
+    p.ts{
+        position: absolute;
+        top:.2rem;
+        left:0;
+        width:6.3rem;
+        text-align:center;
+        font-size:.3rem;
+        color:#cf3843;
+    }
     p.say {
         font-size: .3rem;
         line-height: .44rem;
@@ -172,13 +215,11 @@
         border-radius: 50%;
         background: #fff;
     }
-    
     .con {
         float: left;
         width: 4.5rem;
         margin-left: .3rem;
     }
-    
     .content {
         height: 9.1rem;
         width: 100%;
@@ -186,20 +227,17 @@
         top: 0;
         left: 0;
     }
-    
     #opa {
         opacity: 1;
         z-index: 999;
     }
-    
     .con>p:nth-child(1) {
         color: #F8E81C;
         font-size: .24rem;
         line-height: .33rem;
         width: 100%;
     }
-    
-    .con>p:nth-child(2) {
+     .con>p:nth-child(2) {
         color: #fff;
         font-size: .28rem;
         line-height: .44rem;
@@ -226,15 +264,16 @@
     
     .share {
         font-size: .28rem;
-        color: #6BCEF7;
         position: absolute;
         top: 10.4rem;
         text-align: center;
     }
-    
+    .share>span{
+        color: #6BCEF7;
+    }
     .wish.active,
     .back.active,
-    .share.active {
+    span.active {
         transform: scale(.95, .95);
         -webkit-transform: scale(.95, .95);
     }
@@ -263,7 +302,7 @@
     
     textarea {
         background: transparent;
-        color: #fff;
+        color: #a6c7e4;
         font-size: .32rem;
         line-height: .48rem;
         outline: none;
@@ -287,7 +326,6 @@
         border-radius: 50%;
         overflow: hidden;
     }
-    
     .changeuser>div:nth-child(2) {
         float: left;
         color: #F8E81C;
