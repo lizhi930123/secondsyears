@@ -18,6 +18,11 @@
 </div>
 </template>
 <script>
+    //static
+    require("../../static/swiper.min.css")
+    require("../../static/swiper.min.js")
+    require("../../static/Tween.js")
+    //self
     require("../canvas.js")
     require("./../../static/animation.css")
     import pageone from './pageone'
@@ -185,7 +190,7 @@
     }
     
     .swiper-container {
-        z-index: 999;
+        z-index: 999 !important;
     }
     
     div.container {

@@ -3,7 +3,7 @@
 </template>
 
 <script>
-    var TWEEN = require("../Tween.js")
+    var TWEEN = require("../../static/Tween.js")
     //    console.log(a)
     export default {
         //        props: ['number'],
