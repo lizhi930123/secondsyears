@@ -3,10 +3,10 @@
     <div id="opa" :class="{animated:true,content:true,fadeOutLeft:fadeOutLeft,fadeInLeft:fadeOutRight}">
       <p class="say">对名朋想说的话</p>
       <ul class="list" @touchmove.stop>
-        <li v-for="item in items">
-          <div class="headimg"></div>
+        <li v-for="item in this.$store.state.wordlist">
+          <div class="headimg"><img :src="item.user.headimg"></div>
           <div class="con">
-            <p>{{item.username}}&nbsp;NO.{{item.userno}}</p>
+            <p>{{item.user.name}}&nbsp;NO.{{item.user.no}}</p>
             <p>{{item.content}}</p>
           </div>
         </li>
@@ -45,37 +45,6 @@
                 back: false,
                 show:false,
                 inp:'输入你想对名朋说的话,限制100字以内',
-                items: [{
-                    headimg: '',
-                    username: '艾薇儿',
-                    userno: '1235',
-                    content: '希望名朋越办越好，红红火火，哈哈哈哈哈哈哈哈哈哈'
-                }, {
-                    headimg: '',
-                    username: '艾薇儿',
-                    userno: '1235',
-                    content: '希望名朋越办越好，红红火火，哈哈哈哈哈哈哈哈哈哈'
-                }, {
-                    headimg: '',
-                    username: '艾薇儿',
-                    userno: '1235',
-                    content: '希望名朋越办越好，红红火火，哈哈哈哈哈哈哈哈哈哈'
-                }, {
-                    headimg: '',
-                    username: '艾薇儿',
-                    userno: '1235',
-                    content: '希望名朋越办越好，红红火火，哈哈哈哈哈哈哈哈哈哈'
-                }, {
-                    headimg: '',
-                    username: '艾薇儿',
-                    userno: '1235',
-                    content: '希望名朋越办越好，红红火火，哈哈哈哈哈哈哈哈哈哈'
-                }, {
-                    headimg: '',
-                    username: '艾薇儿',
-                    userno: '1235',
-                    content: '希望名朋越办越好，红红火火，哈哈哈哈哈哈哈哈哈哈'
-                }, ]
             }
         },
         watch: {
@@ -133,16 +102,26 @@
                     if(useragent.match(/iPhone\sOS/i) != null && useragent.match(/MicroMessenger/i) != 'MicroMessenger'){
                         window.location.href="https://itunes.apple.com/cn/app/ming-ren-peng-you-quan/id982115698?mt=8";
                     }else{
-                        
+
                     }
                 }else{
                     if(this.val==''){
                         this.inp='请输入内容！';
                     }else{
-                       this.items.unshift({
-                            headimg:'',
-                            username:this.$store.state.current_user.name,
-                            userno:this.$store.state.current_user.no,
+                        this.$http({
+                            method: 'get',
+                            url: 'http://test.mrpyq.com/annual2/tomp',
+                            params: {
+                                'access_token': this.$store.state.access_token,
+                                'userid':this.$store.state.current_user._id,
+                                'content':this.val
+                            },
+                            emulateJSON: true
+                        }).then((res) => {
+                            console.log(res.body);
+                        })
+                        this.$store.state.wordlist.unshift({
+                            user:this.$store.state.current_user,
                             content:this.val,
                         })
                         this.backto();
@@ -214,6 +193,11 @@
         height: .8rem;
         border-radius: 50%;
         background: #fff;
+        overflow:hidden;
+    }
+    .headimg>img{
+        display: block;
+        width:100%;
     }
     .con {
         float: left;

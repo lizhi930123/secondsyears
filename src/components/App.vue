@@ -120,6 +120,7 @@
             if (this.$store.state.access_token) {
                 this.get_userinfo();
                 this.get_play();
+                this.get_words();
             }
         },
         methods: {
@@ -133,16 +134,27 @@
                     emulateJSON: true
                 }).then((res) => {
                     console.log(res.body);
-                    this.$store.state.days = res.body.days;
-                    this.$store.state.signin = res.body.signin;
-                    this.$store.state.date = res.body.ts;
-                    this.$store.state.member = res.body.stat.member ? res.body.stat.member : 0;
-                    this.$store.state.follow = res.body.stat.follow ? res.body.stat.follow : 0;
-                    this.$store.state.friends = res.body.stat.friends ? res.body.stat.friend : 0;
-                    this.$store.state.group = res.body.stat.group ? res.body.stat.group : 0;
-                    this.$store.state.wealth_in = res.body.wealth_in;
-                    this.$store.state.wealth_out = res.body.wealth_out;
-                    this.$store.state.current_user = res.body.member;
+                    if(!res.body.newer){
+                        this.$store.state.days = res.body.days;
+                        this.$store.state.signin = res.body.signin;
+                        this.$store.state.date = res.body.ts;
+                        this.$store.state.member = res.body.stat.member ? res.body.stat.member : 0;
+                        this.$store.state.follow = res.body.stat.follow ? res.body.stat.follow : 0;
+                        this.$store.state.friends = res.body.stat.friends ? res.body.stat.friend : 0;
+                        this.$store.state.group = res.body.stat.group ? res.body.stat.group : 0;
+                        this.$store.state.wealth_in = res.body.wealth_in;
+                        this.$store.state.wealth_out = res.body.wealth_out;
+                        this.$store.state.current_user = res.body.member;
+                        if(res.body.cp){
+                            this.$store.state.cp=res.body.cp;
+                        }
+                        if(res.body.friend){
+                            this.$store.state.friend=res.body.friend;
+                        }
+                        if(res.body.group){
+                            this.$store.state.firstgroup=res.body.group;
+                        }
+                    }
                 })
             },
             get_play: function() {
@@ -156,6 +168,19 @@
                 }).then((res) => {
                     console.log(res.body);
                     this.$store.state.users = res.body.items;
+                })
+            },
+            get_words: function() {
+                this.$http({
+                    method: 'get',
+                    url: 'http://test.mrpyq.com/annual2/list',
+                    params: {
+                        'access_token': this.$store.state.access_token,
+                    },
+                    emulateJSON: true
+                }).then((res) => {
+                    console.log(res.body);
+                    this.$store.state.wordlist = res.body.items;
                 })
             },
         }
@@ -251,7 +276,6 @@
     p {
         font-size: .3rem;
         line-height: .5rem;
-        height: .5rem;
         color: #fff;
         width: 100%;
     }
