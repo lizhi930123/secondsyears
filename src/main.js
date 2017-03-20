@@ -18,7 +18,7 @@ const store = new Vuex.Store({
         changeI: false,
         days: 0,
         signin: 0,
-        date: '',
+        date: '不久前',
         member: 0,
         follow: 0,
         group: 0,
@@ -28,7 +28,11 @@ const store = new Vuex.Store({
         current_user: {},
         users: [],
         othershare: false,
-        seven: true,
+		seven: true,
+        cp:false,
+        friend:false,
+        firstgroup:false,
+        wordlist:[],
     },
     //此为同步方法
     mutations: {

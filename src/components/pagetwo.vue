@@ -100,8 +100,8 @@
     
     .two {
         width: .397rem;
-        top: 6.717rem;
-        left: 4.041rem;
+        top: 7.017rem;
+        left: 3.741rem;
         z-index: 999;
     }
     
@@ -112,9 +112,9 @@
     p.tishi {
         position: absolute;
         width: 100%;
-        top: 7.21rem;
+        top: 7.51rem;
         left: 0;
-        padding-left: 4.62rem;
+        padding-left: 4.32rem;
         text-align: left;
         font-size: .24rem;
         line-height: .33rem;

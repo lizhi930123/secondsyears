@@ -3,9 +3,12 @@
 <img src="./../assets/bottomimg.gif" class="bottomimg">
 <div :class="{animated:true,data:true,fadeInLeft:this.$store.state.swi[5]}">
   <p>名朋世界中</p>
-  <p>有<tween :class="{big:true,animated:true,opashow:opashow1}" :value="number1"></tween>个好友</p>
-  <p>悄悄的特别关心了你~</p>
-  <p>超过<span :class="{animated:true,zoomIn3:this.$store.state.swi[5]}">100%</span>的居民</p>
+  <p v-if="this.$store.state.follow">有<tween :class="{big:true,animated:true,opashow:opashow1}" :value="number1"></tween>个好友</p>
+  <p v-if="this.$store.state.follow">悄悄的特别关心了你~</p>
+  <p v-if="this.$store.state.follow"><span :class="{animated:true,nomargin:true,zoomIn3:this.$store.state.swi[5]}">被关心的感觉真好</span></p>
+  <p v-if="!this.$store.state.follow"><span :class="{animated:true,nomargin:true,fadeIn:opashow1}">还没有人把我设为特别关心</span></p>
+  <p v-if="!this.$store.state.follow"><span :class="{animated:true,nomargin:true,zoomIn3:this.$store.state.swi[5]}" style="color:#fff">但我知道有人心里记得我就好啦~
+</span></p>
 </div>
 <img src="./../assets/phone.png" class="phone mymove1">
 <img src="./../assets/headimg.png" class="headimg1 mymove2">
@@ -74,7 +77,9 @@
         position: absolute;
         display: block;
     }
-    
+    .nomargin{
+      margin:0!important;
+    }
     .phone {
         width: 2rem;
         top: 2.55rem;
