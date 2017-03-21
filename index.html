@@ -5,21 +5,11 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
     <title>周年庆典</title>
-    <style>
-
-
-    </style>
+    <script src="http://sdk.talkingdata.com/app/h5/v1?appid=A6D0FE6B49D549FB815B85CE9F12BFC9&vn=两周年Ver=1.0&vc=1.000"></script>
     <script>
-        //声明_czc对象:
-        var _czc = _czc || [];
-        //绑定siteid，请用您的siteid替换下方"XXXXXXXX"部分
-        _czc.push(["_setAccount", "1259421891"]);
-
-    </script>
-    <script>
+        TDAPP.onEvent("功能", "浏览量");
         var init = false,
             bri = {};
-
         function connectWebViewJavascriptBridge(callback) {
             if (window.WebViewJavascriptBridge) {
                 return callback(WebViewJavascriptBridge);
@@ -52,15 +42,11 @@
             win.addEventListener(resizeEvt, recalc, false);
             doc.addEventListener('DOMContentLoaded', recalc, false);
         })(document, window);
-
     </script>
 </head>
-
 <body>
-    <!-- <script src="http://s95.cnzz.com/z_stat.php?id=1259421891&web_id=1259421891" language="JavaScript"></script> -->
     <div id="app"></div>
     <canvas id="hosisora" width="640" height="1136"></canvas>
     <!-- built files will be auto injected -->
 </body>
-
 </html>

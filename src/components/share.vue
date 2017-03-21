@@ -13,7 +13,7 @@
           </ul>
     </div>
 </div>
-</transition> 
+</transition>
 </template>
 <script>
   export default({
@@ -28,9 +28,9 @@
       share:function(event){
         event.preventDefault();
         var n=event.target.dataset.name;
-        var u=location.href+'access_token='+this.$store.state.access_token;
+        var u='http://activity.mrpyq.com/anniversary2017_share/index.html';
         if(init){
-          bri.callHandler('shareToThird',{'platform':n,'title':'名朋两岁啦！','text':'看看你都在名朋做了啥？','targetUrl':u}, function(responseData) {
+          bri.callHandler('shareToThird',{'platform':n,'title':'名朋2周年生日快乐！','text':'看看过去的2年我与名朋的故事','targetUrl':u}, function(responseData) {
           })
         }
       },

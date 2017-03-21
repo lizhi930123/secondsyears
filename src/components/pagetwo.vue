@@ -6,7 +6,7 @@
       <p :class="{animated:true,date:true,wobble:this.$store.state.swi[1]}">{{this.$store.state.date}}</p>
       <p>你入住了名朋</p>
     </div>
-    <p :class="{animated:true,playdays:true,fadeIn:this.$store.state.swi[1]}">登陆天数<tween :class="{animated:true,big:true,opashow:this.opashow2}" :value="number2"></tween>天</p>
+    <p :class="{animated:true,playdays:true,fadeIn:this.$store.state.swi[1]}">签到天数<tween :class="{animated:true,big:true,opashow:this.opashow2}" :value="number2"></tween>天</p>
     <img src="./../assets/city.png" class="city mymove1">
     <img src="./../assets/bottomimg.gif" class="bottomimg">
     <img src="./../assets/twopage.png" :class="{two:true,animated:true,fadeIn2:this.$store.state.swi[1]}">

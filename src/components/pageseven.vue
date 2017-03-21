@@ -105,7 +105,7 @@
                     } else {
                         this.$http({
                             method: 'get',
-                            url: 'http://test.mrpyq.com/annual2/tomp',
+                            url: 'http://www.mrpyq.com/annual2/tomp',
                             params: {
                                 'access_token': this.$store.state.access_token,
                                 'userid': this.$store.state.current_user._id,
@@ -247,6 +247,7 @@
         left: 1.75rem;
         top: 9.35rem;
         outline: none;
+        font-size:.32rem;
     }
     
     .share {

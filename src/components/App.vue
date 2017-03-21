@@ -26,13 +26,13 @@
 </div>
 </template>
 <script>
+    //self
+    require("../canvas.js")
+    require("./../../static/animation.css")
     //static
     require("../../static/swiper.min.css")
     require("../../static/swiper.min.js")
     require("../../static/Tween.js")
-    //self
-    require("../canvas.js")
-    require("./../../static/animation.css")
     import pageone from './pageone'
     import pagetwo from './pagetwo'
     import pagethree from './pagethree'
@@ -133,23 +133,23 @@
             }
         },
         methods: {
-            get_userinfo: function() {
+            get_userinfo: function(){
                 this.$http({
                     method: 'get',
-                    url: 'http://test.mrpyq.com/annual2/account_info',
+                    url: 'http://www.mrpyq.com/annual2/account_info',
                     params: {
                         'access_token': this.$store.state.access_token,
                     },
                     emulateJSON: true
                 }).then((res) => {
                     console.log(res.body);
-                    if (!res.body.newer) {
+                    if (!res.body.newer){
                         this.$store.state.days = res.body.days;
                         this.$store.state.signin = res.body.signin;
                         this.$store.state.date = res.body.ts;
                         this.$store.state.member = res.body.stat.member ? res.body.stat.member : 0;
                         this.$store.state.follow = res.body.stat.follow ? res.body.stat.follow : 0;
-                        this.$store.state.friends = res.body.stat.friends ? res.body.stat.friend : 0;
+                        this.$store.state.friends = res.body.stat.friend ? res.body.stat.friend : 0;
                         this.$store.state.group = res.body.stat.group ? res.body.stat.group : 0;
                         this.$store.state.wealth_in = res.body.wealth_in;
                         this.$store.state.wealth_out = res.body.wealth_out;
@@ -163,13 +163,15 @@
                         if (res.body.group) {
                             this.$store.state.firstgroup = res.body.group;
                         }
+                    }else{
+                        this.$store.state.newer=true;
                     }
                 })
             },
             get_play: function() {
                 this.$http({
                     method: 'get',
-                    url: 'http://test.mrpyq.com/api/account/members_by_me',
+                    url: 'http://www.mrpyq.com/api/account/members_by_me',
                     params: {
                         'access_token': this.$store.state.access_token,
                     },
@@ -182,9 +184,8 @@
             get_words: function() {
                 this.$http({
                     method: 'get',
-                    url: 'http://test.mrpyq.com/annual2/list',
+                    url: 'http://www.mrpyq.com/annual2/list',
                     params: {
-                        'access_token': this.$store.state.access_token,
                     },
                     emulateJSON: true
                 }).then((res) => {
@@ -204,7 +205,13 @@
         box-sizing: border-box;
         -webkit-box-sizing: border-box;
     }
-    
+    body{
+        background:linear-gradient(top,#470F71,#2C63D8);
+        background:-webkit-linear-gradient(top,#470F71,#2C63D8);
+    }
+    html,body{
+        min-height: 10.85rem;
+    }
     canvas {
         display: block;
         position: absolute;
@@ -233,13 +240,14 @@
         width: 100%;
         height: 100%;
         font-family: 'PingFangSC-Regular', 'microsoft yahei';
-        overflow-x: hidden;
+        overflow: hidden;
     }
-    
+      #app{
+        position: relative;
+      }
     .swiper-container {
         z-index: 999 !important;
     }
-    
     div.container {
         width: 100%;
         height: 10.85rem;

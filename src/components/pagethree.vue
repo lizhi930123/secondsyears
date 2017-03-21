@@ -26,7 +26,7 @@
      <img src="./../assets/bluepeople.png" class="bluepeople mymove4">
      <img src="./../assets/bottomimg.gif" class="bottomimg">
      <img src="./../assets/three.png" :class="{three:true,animated:true,fadeIn3:this.$store.state.swi[2]}">
-    <p :class="{tishi:true,animated:true,fadeIn3:this.$store.state.swi[2]}">大触就是这么的寂寞</p>
+    <p :class="{tishi:true,animated:true,fadeIn3:this.$store.state.swi[2]}">每天变换这么多次身份，我就是最佳演员</p>
 </div>
 </template>
 <script>

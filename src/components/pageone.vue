@@ -5,6 +5,7 @@
   <img src="./../assets/year.png" class="year mymove3">
   <img src="./../assets/timebook.png" class="timebook mymove4">
   <img src="./../assets/bottomimg.gif" class="bottomimg">
+  <p id="newer" v-if="this.$store.state.newer">数据截止至2017年3月20日中午</p>
 </div>
 </template>
 <script>
@@ -43,6 +44,12 @@
     display: block;
     width:6.2rem;
     margin-left:.65rem;
+  }
+  #newer{
+    position: absolute;
+    width:100%;
+    color:#fff;
+    text-align:center;
   }
   .two{
     position: absolute;

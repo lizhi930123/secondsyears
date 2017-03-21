@@ -19,6 +19,7 @@ var hoxisora = {
     //meteor
     meteors: [],
     meteor_speed: 2,
+    meteor_probability:0.99,
     time: new Date(),
     init: function () {
         var me = this;
@@ -32,6 +33,13 @@ var hoxisora = {
 
         if (/iphone/i.test(navigator.userAgent)) {
             me.meteor_speed = 5;
+        }
+        var ua=navigator.userAgent;
+        if(ua.match(/android/i)){
+            if(ua.match(/android.{4}/i)[0].substring(8)<=4.4){
+              me.star_count=0;  
+              me.meteor_probability = 1;
+            }    
         }
         //anime loop
         me.loop();
@@ -61,14 +69,11 @@ var hoxisora = {
         me.draw_bg();
         me.draw_star();
         me.draw_meteor();
-
         // 随机触发流星
         let i = Math.random();
-        if (i > 0.99) {
+        if (i > me.meteor_probability) {
             me.new_meteor();
         }
-
-
         me.rAF = window.requestAnimationFrame(me.loop);
     },
     draw_bg: function () {

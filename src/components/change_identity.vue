@@ -1,6 +1,7 @@
 <template>
     <transition name = "change_identity">
     <div id="out_box" v-if="this.$store.state.changeI" @click = "disapear" @touchmove.stop>
+    <div class="container">
         <div id="box" @click.stop>
             <div id="title">常用名人
                 <img id="close" src="../assets/close.png" alt="" @click = "disapear">
@@ -25,6 +26,8 @@
                 </div>
         </div>
         <div id="queren" @click.stop = "disapear" @touchstart = "scale" @touchend = "scale" :class = "{_scale:scale1}">确认</div>
+    </div>
+        
     </div>
     </transition>
 </template>
@@ -98,12 +101,12 @@
         background: -webkit-linear-gradient(left, #01C3FF, #777DFA);
         border: none;
         left: 1.75rem;
-        top: 11.2rem;
+        top: 9.7rem;
         outline: none;
         transition: all .2s;
     }
     
-    #identity_scroll {
+    #identity_scroll{
         overflow: auto;
         max-height: 85%;
     }
@@ -163,7 +166,7 @@
     #box {
         position: absolute;
         left: .55rem;
-        top: 1rem;
+        top: 0rem;
         width: 85.3%;
         height: 9.28rem;
         border: 1px solid #00E2FD;

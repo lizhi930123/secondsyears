@@ -28,7 +28,7 @@
         mounted: function() {
             //init
             var me = this;
-            me.$http.get("http://test.mrpyq.com/channel/details_json?channel=main").then(
+            me.$http.get("http://www.mrpyq.com/channel/details_json?channel=main").then(
                 res => {
                     me.iphone = res.body.iphone;
                     me.android = res.body.android;

@@ -14,7 +14,7 @@
     <p v-if="this.$store.state.cp">第一个cp是<span :class="{animated:true,name:true,wobble:this.$store.state.swi[3]}">{{this.$store.state.cp.name}} NO.{{this.$store.state.cp.no}}</span></p>
     <p v-if="!this.$store.state.cp"><span :class="{animated:true,name:true,wobble:this.$store.state.swi[3]}">我还没有cp</span><br><span :class="{animated:true,name:true,wobble:this.$store.state.swi[3]}"  style="color:#fff">攒圈币买个戒指找对象啦~</span></p>
     <p v-if="this.$store.state.cp">你们现在还彼此相爱吗</p>
-    <p v-if="this.$store.state.firstgroup">第一个群是<span :class="{animated:true,name:true,wobble:this.$store.state.swi[3]}">{{this.$store.state.firstgroup.name}}</span></p>
+    <p v-if="this.$store.state.firstgroup">第一个群是&nbsp;<span :class="{animated:true,name:true,wobble:this.$store.state.swi[3]}">{{this.$store.state.firstgroup.name}}</span></p>
     <p v-if="this.$store.state.firstgroup">你们现在还在一起畅谈吗</p>
     <p v-if="!this.$store.state.firstgroup"><span :class="{animated:true,name:true,swing:this.$store.state.swi[3]}">我还没有加群</span><br><span :class="{animated:true,name:true,swing:this.$store.state.swi[3]}" style="color:#fff">一会去搜索群那里找找组织</span></p>
   </div>
